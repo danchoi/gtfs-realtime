@@ -1,2 +1,8 @@
 
 Haskell code for GTFS realtime protocol buffer
+
+Documentation:
+
+https://developers.google.com/transit/gtfs-realtime/reference#TripUpdate
+
+https://hackage.haskell.org/package/protobuf-0.2.0.4/docs/Data-ProtocolBuffers.html
