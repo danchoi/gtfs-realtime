@@ -25,7 +25,7 @@ data Incrementality = FullDataset | Differential deriving (Show, Ord, Eq, Enum)
 
 data FeedEntity = FeedEntity {
     feedId :: Required 1 (Value Text)
-  , feedIsDeleted :: Optional 1 (Value Bool)
+  , feedIsDeleted :: Optional 2 (Value Bool)
   , tripUpdate :: Optional 3 (Message TripUpdate)
   } deriving (Generic, Show)
 
