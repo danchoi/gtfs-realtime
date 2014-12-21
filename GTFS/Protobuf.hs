@@ -68,7 +68,7 @@ instance ToJSON TripDescriptor where
     , "route_id" .= (getField . route_id $ v)
     , "start_time" .= (getField . start_time $ v)
     , "start_date" .= (getField . start_date $ v)
-    , "schedule_relationship" .= (show . getField . schedule_relationship $ v)
+    , "schedule_relationship" .= (fmap show . getField . schedule_relationship $ v)
     ]
     
 
