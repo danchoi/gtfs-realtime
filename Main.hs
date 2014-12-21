@@ -1,11 +1,12 @@
 module Main where
 import qualified GTFS.Protobuf as P
-import GTFS.Types
-import Data.ProtocolBuffers
-import Data.Serialize
+import Data.ProtocolBuffers  hiding (encode)
+import Data.Serialize hiding (encode)
 import Data.Hex
 import qualified Data.ByteString.Lazy as BL
+import qualified Data.ByteString.Lazy.Char8 as BL8
 import Control.Monad
+import Data.Aeson (encode)
 
 main = do 
     raw <- BL.getContents
@@ -14,10 +15,4 @@ main = do
       Left err -> error $ "error: " ++ err
       Right feed -> do
         let xs = getField $ P.feedEntity feed               
-        mapM_ (print . f . getField . P.tripUpdate) xs 
- where f t = case t of 
-              Just t' -> decodeTripUpdate t'
-              Nothing -> error "Can't decode trip update"
-
-
-    
+        mapM_ (BL8.putStrLn . encode . getField . P.tripUpdate) xs 

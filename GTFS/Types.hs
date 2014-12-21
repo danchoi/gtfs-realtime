@@ -4,6 +4,7 @@ import Data.Text (Text)
 import qualified GTFS.Protobuf as P
 import Data.ProtocolBuffers
 
+
 data TripUpdate = TripUpdate {
     trip :: Trip
   , vehicle :: (Maybe Vehicle)

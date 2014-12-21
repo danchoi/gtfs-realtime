@@ -5,6 +5,7 @@ import Data.ProtocolBuffers
 import Data.Text
 import GHC.Generics (Generic)
 import GHC.TypeLits
+import Data.Aeson hiding (Value)
 
 data FeedMessage = FeedMessage {
     feedHeader :: Required 1 (Message FeedHeader)
@@ -48,6 +49,28 @@ data TripUpdate = TripUpdate {
   , stop_time_update :: Repeated 2 (Message StopTimeUpdate)
   , timestamp :: Optional 4 (Value Int64)
   } deriving (Generic, Show)
+
+instance ToJSON TripUpdate where
+  toJSON v = object [
+      "vehicle" .= (getField . vehicle $ v)
+    , "trip" .= (getField . trip $ v)
+    ]
+
+instance ToJSON VehicleDescriptor where
+  toJSON v = object [
+      "id" .= (getField . vehicleId $ v)
+    , "label" .= (getField . vehicleLabel $ v)
+    ]
+
+instance ToJSON TripDescriptor where
+  toJSON v = object [
+      "trip_id" .= (getField . trip_id $ v)
+    , "route_id" .= (getField . route_id $ v)
+    , "start_time" .= (getField . start_time $ v)
+    , "start_date" .= (getField . start_date $ v)
+    , "schedule_relationship" .= (show . getField . schedule_relationship $ v)
+    ]
+    
 
 instance Decode TripUpdate 
 
