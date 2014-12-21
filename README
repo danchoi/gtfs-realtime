@@ -28,3 +28,5 @@ New usage
 
 gtfs-realtime $ dist gtfs-realtime < TripUpdates.pb   | jqm | grep start_date
 
+
+https://github.com/dcodeIO/ProtoBuf.js/wiki/ProtoBuf.js-vs-JSON
