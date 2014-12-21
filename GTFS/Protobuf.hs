@@ -44,45 +44,6 @@ data TripDescriptor = TripDescriptor {
 
 instance Decode TripDescriptor
 
-data TripUpdate = TripUpdate {
-    trip :: Required 1 (Message TripDescriptor)
-  , vehicle :: Optional 3 (Message VehicleDescriptor)
-  , stop_time_update :: Repeated 2 (Message StopTimeUpdate)
-  , timestamp :: Optional 4 (Value Int64)
-  } deriving (Generic, Show)
-
-instance ToJSON TripUpdate where
-  toJSON v = object [
-      "vehicle" .= (getField . vehicle $ v)
-    , "trip" .= (getField . trip $ v)
-    , "stop_time_updates" .= (getField . stop_time_update $ v)
-    ]
-
-instance ToJSON StopTimeUpdate where
-  toJSON v = object [
-      "stop_sequence" .= (getField . stop_sequence $ v) 
-    , "stop_id" .= (getField . stop_id $ v)
-    , "arrival" .= (getField . arrival $ v)
-    , "departure" .= (getField . departure $ v)
-    , "schedule_relationship" .= (getField . stScheduleRelationship $ v)
-    ]
-
-instance ToJSON StopTimeEvent where
-  toJSON v = object [
-      "delay" .= (getField . delay $ v)
-    , "time" .= (getField . time $ v)
-    , "uncertainty" .= (getField . uncertainty $ v)
-    ]
-
-instance ToJSON TDScheduleRelationship where toJSON = String . T.pack . show 
-instance ToJSON STScheduleRelationship where toJSON = String . T.pack . show 
-
-instance ToJSON VehicleDescriptor where
-  toJSON v = object [
-      "id" .= (getField . vehicleId $ v)
-    , "label" .= (getField . vehicleLabel $ v)
-    ]
-
 instance ToJSON TripDescriptor where
   toJSON v = object [
       "trip_id" .= (getField . trip_id $ v)
@@ -91,8 +52,22 @@ instance ToJSON TripDescriptor where
     , "start_date" .= (getField . start_date $ v)
     , "schedule_relationship" .= (getField . schedule_relationship $ v)
     ]
-    
+
+data TripUpdate = TripUpdate {
+    trip :: Required 1 (Message TripDescriptor)
+  , vehicle :: Optional 3 (Message VehicleDescriptor)
+  , stop_time_update :: Repeated 2 (Message StopTimeUpdate)
+  , timestamp :: Optional 4 (Value Int64)
+  } deriving (Generic, Show)
+
 instance Decode TripUpdate 
+
+instance ToJSON TripUpdate where
+  toJSON v = object [
+      "vehicle" .= (getField . vehicle $ v)
+    , "trip" .= (getField . trip $ v)
+    , "stop_time_updates" .= (getField . stop_time_update $ v)
+    ]
 
 data VehicleDescriptor = VehicleDescriptor {
     vehicleId :: Optional 1 (Value Text)
@@ -102,6 +77,12 @@ data VehicleDescriptor = VehicleDescriptor {
   } deriving (Generic, Show)
 
 instance Decode VehicleDescriptor 
+
+instance ToJSON VehicleDescriptor where
+  toJSON v = object [
+      "id" .= (getField . vehicleId $ v)
+    , "label" .= (getField . vehicleLabel $ v)
+    ]
 
 data StopTimeUpdate = StopTimeUpdate {
     stop_sequence :: Optional 1 (Value Int32)
@@ -114,12 +95,24 @@ data StopTimeUpdate = StopTimeUpdate {
 
 instance Decode StopTimeUpdate 
 
-data TDScheduleRelationship = 
-  Scheduled | Added | Unscheduled | Canceled 
+instance ToJSON StopTimeUpdate where
+  toJSON v = object [
+      "stop_sequence" .= (getField . stop_sequence $ v) 
+    , "stop_id" .= (getField . stop_id $ v)
+    , "arrival" .= (getField . arrival $ v)
+    , "departure" .= (getField . departure $ v)
+    , "schedule_relationship" .= (getField . stScheduleRelationship $ v)
+    ]
+
+data TDScheduleRelationship = Scheduled | Added | Unscheduled | Canceled 
   deriving (Show, Eq, Ord, Enum)
+
+instance ToJSON TDScheduleRelationship where toJSON = String . T.pack . show 
 
 data STScheduleRelationship = Schedules | Skipped | NoData 
   deriving (Show, Eq, Ord, Enum)
+
+instance ToJSON STScheduleRelationship where toJSON = String . T.pack . show 
     
 data StopTimeEvent = StopTimeEvent {
     delay :: Optional 1 (Value Int32)
@@ -129,3 +122,12 @@ data StopTimeEvent = StopTimeEvent {
   } deriving (Generic, Show)
 
 instance Decode StopTimeEvent
+
+instance ToJSON StopTimeEvent where
+  toJSON v = object [
+      "delay" .= (getField . delay $ v)
+    , "time" .= (getField . time $ v)
+    , "uncertainty" .= (getField . uncertainty $ v)
+    ]
+
+
