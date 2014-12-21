@@ -1,11 +1,10 @@
 {-# LANGUAGE OverloadedStrings, DeriveGeneric, DataKinds #-}
-module GTFS.Test where
+module GTFS.Protobuf where
 import Data.Int
 import Data.ProtocolBuffers
 import Data.Text
 import GHC.Generics (Generic)
 import GHC.TypeLits
-
 
 data FeedMessage = FeedMessage {
     feedHeader :: Required 1 (Message FeedHeader)
