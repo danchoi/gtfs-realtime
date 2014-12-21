@@ -17,6 +17,10 @@ decodeTripUpdate x =
         stopTimeUpdates' = getField . P.stop_time_update $ x
     in (tripDescriptor', vehicle', stopTimeUpdates')
 
+decodeTrip :: P.TripDescriptor -> Trip
+decodeTrip x = undefined
+    
+
 data Trip = Trip Int Int Text Text Text deriving (Show)
 
 data Vehicle = Vehicle Int Text Text deriving (Show)
