@@ -23,3 +23,8 @@ https://code.google.com/p/protobuf-haskell/wiki/Basics
 Sample usage
 
 gtfs-realtime $ curl http://developer.mbta.com/lib/GTRTFS/Alerts/TripUpdates.pb | dist gtfs-realtime
+
+New usage
+
+gtfs-realtime $ dist gtfs-realtime < TripUpdates.pb   | jqm | grep start_date
+
