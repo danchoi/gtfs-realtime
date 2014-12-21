@@ -17,3 +17,5 @@ http://developer.mbta.com/lib/GTRTFS/Alerts/VehiclePositions.pb
 http://developer.mbta.com/lib/GTRTFS/Alerts/TripUpdates.pb
 
 http://developer.mbta.com/lib/GTRTFS/Alerts/Alerts.pb
+
+https://code.google.com/p/protobuf-haskell/wiki/Basics
