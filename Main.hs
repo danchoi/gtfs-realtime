@@ -1,5 +1,6 @@
 module Main where
 import qualified GTFS.Protobuf as P
+import GTFS.JSON
 import Data.ProtocolBuffers  hiding (encode)
 import Data.Serialize hiding (encode)
 import Data.Hex

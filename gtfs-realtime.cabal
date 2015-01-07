@@ -19,7 +19,7 @@ cabal-version:       >=1.10
 executable gtfs-realtime
   main-is:             Main.hs
   other-modules:       GTFS.Protobuf
-  -- other-extensions:    
+                     , GTFS.JSON
   build-depends:       base >=4.7 && <4.8
                      , protobuf
                      , cereal
