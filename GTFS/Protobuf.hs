@@ -14,9 +14,9 @@ data FeedMessage = FeedMessage {
 instance Decode FeedMessage
 
 data FeedHeader = FeedHeader {
-    gtfsRealTimeVersion  :: Required 1 (Value Text)
-  , incrementality       :: Optional 2 (Enumeration Incrementality)
-  , feedHeaderTimestamp  :: Optional 3 (Value Int64)
+    gtfsRealTimeVersion :: Required 1 (Value Text)
+  , incrementality      :: Optional 2 (Enumeration Incrementality)
+  , feedHeaderTimestamp :: Optional 3 (Value Int64)
   } deriving (Generic, Show)
 
 instance Decode FeedHeader
@@ -25,11 +25,11 @@ data Incrementality = FullDataset | Differential
   deriving (Show, Ord, Eq, Enum)
 
 data FeedEntity = FeedEntity {
-    feedId         :: Required 1 (Value Text)
-  , feedIsDeleted  :: Optional 2 (Value Bool)
-  , tripUpdate     :: Optional 3 (Message TripUpdate)
-  , vehicle        :: Optional 4 (Message VehiclePosition)
-  , alert          :: Optional 5 (Message Alert)
+    feedId        :: Required 1 (Value Text)
+  , feedIsDeleted :: Optional 2 (Value Bool)
+  , tripUpdate    :: Optional 3 (Message TripUpdate)
+  , vehicle       :: Optional 4 (Message VehiclePosition)
+  , alert         :: Optional 5 (Message Alert)
   } deriving (Generic, Show)
 
 instance Decode FeedEntity
@@ -37,11 +37,11 @@ instance Decode FeedEntity
 ------------------------------------------------------------------------
 
 data TripDescriptor = TripDescriptor {
-    trip_id                :: Optional 1 (Value Text)
-  , route_id               :: Optional 5 (Value Text)
-  , start_time             :: Optional 2 (Value Text)
-  , start_date             :: Optional 3 (Value Text)
-  , schedule_relationship  :: Optional 4 (Enumeration TDScheduleRelationship)
+    trip_id               :: Optional 1 (Value Text)
+  , route_id              :: Optional 5 (Value Text)
+  , start_time            :: Optional 2 (Value Text)
+  , start_date            :: Optional 3 (Value Text)
+  , schedule_relationship :: Optional 4 (Enumeration TDScheduleRelationship)
   -- extensions
   } deriving (Generic, Show)
 
@@ -93,24 +93,24 @@ instance Decode StopTimeEvent
 ------------------------------------------------------------------------
 
 data VehiclePosition = VehiclePosition {
-    vpTrip                   :: Optional 1 (Message TripDescriptor)
-  , vpVehicle                :: Optional 3 (Message VehicleDescriptor)
-  , vpPosition               :: Optional 2 (Message Position)
-  , vpCurrentStopSequence    :: Optional 3 (Value Int32)
-  , vpStopId                 :: Optional 7 (Value String)
-  , vpVehicleStopStatus      :: Optional 4 (Enumeration VehicleStopStatus)
-  , vpTimeStamp              :: Optional 5 (Value Int64)
-  , vpCongestionLevel        :: Optional 6 (Enumeration  CongestionLevel)
+    vpTrip                :: Optional 1 (Message TripDescriptor)
+  , vpVehicle             :: Optional 3 (Message VehicleDescriptor)
+  , vpPosition            :: Optional 2 (Message Position)
+  , vpCurrentStopSequence :: Optional 3 (Value Int32)
+  , vpStopId              :: Optional 7 (Value String)
+  , vpVehicleStopStatus   :: Optional 4 (Enumeration VehicleStopStatus)
+  , vpTimeStamp           :: Optional 5 (Value Int64)
+  , vpCongestionLevel     :: Optional 6 (Enumeration  CongestionLevel)
   } deriving (Generic, Show)
-
+                            
 instance Decode VehiclePosition
                             
 data Position = Position {
-    latitude                 :: Required 1 (Value Float)
-  , longitude                :: Required 2 (Value Float)
-  , bearing                  :: Optional 3 (Value Float)
-  , odometer                 :: Optional 4 (Value Double)
-  , speed                    :: Optional 5 (Value Float)
+    latitude  :: Required 1 (Value Float)
+  , longitude :: Required 2 (Value Float)
+  , bearing   :: Optional 3 (Value Float)
+  , odometer  :: Optional 4 (Value Double)
+  , speed     :: Optional 5 (Value Float)
   } deriving (Generic, Show)
                             
 instance Decode Position
@@ -128,12 +128,12 @@ data CongestionLevel = UnknownCongestionLevel
 ------------------------------------------------------------------------
 
 data Alert = Alert {
-    alertTimeRange           :: Repeated 1 (Message TimeRange)
-  , alertEntitySelector      :: Repeated 5 (Message EntitySelector)
-  , alertCause               :: Optional 6 (Enumeration Cause)
-  , alertEffect              :: Optional 7 (Enumeration Effect)
-  , alertUrl                 :: Optional 8 (Message TranslatedString)
-  , alertDescriptionText     :: Optional 11 (Message TranslatedString)
+    alertTimeRange       :: Repeated 1 (Message TimeRange)
+  , alertEntitySelector  :: Repeated 5 (Message EntitySelector)
+  , alertCause           :: Optional 6 (Enumeration Cause)
+  , alertEffect          :: Optional 7 (Enumeration Effect)
+  , alertUrl             :: Optional 8 (Message TranslatedString)
+  , alertDescriptionText :: Optional 11 (Message TranslatedString)
   } deriving (Generic, Show)
 
 instance Decode Alert
