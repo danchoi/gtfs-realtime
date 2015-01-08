@@ -8,9 +8,9 @@ This is not production ready.
 ## Sample usage
 
 ```bash
-curl http://developer.mbta.com/lib/GTRTFS/Alerts/TripUpdates.pb | dist gtfs-realtime t
-curl http://developer.mbta.com/lib/GTRTFS/Alerts/VehiclePositions.pb | dist gtfs-realtime v
-curl http://developer.mbta.com/lib/GTRTFS/Alerts/Alerts.pb | dist gtfs-realtime a
+curl http://developer.mbta.com/lib/GTRTFS/Alerts/TripUpdates.pb | gtfs-realtime t
+curl http://developer.mbta.com/lib/GTRTFS/Alerts/VehiclePositions.pb | gtfs-realtime v
+curl http://developer.mbta.com/lib/GTRTFS/Alerts/Alerts.pb | gtfs-realtime a
 ```
 
 
