@@ -155,7 +155,8 @@ data EntitySelector = EntitySelector {
 
 instance Decode EntitySelector
 
-data Cause = UnknownCause
+data Cause = DUMMYCAUSE -- to force the real enumeration to start at 1
+           | UnknownCause
            | OtherCause
            | TechnicalProblem
            | Strike
@@ -169,7 +170,8 @@ data Cause = UnknownCause
            | MedicalEmergency
            deriving (Show, Ord, Eq, Enum)
 
-data Effect = NoService
+data Effect = DUMMYEFFECT
+            | NoService
             | ReducedService
             | SignificantDelays
             | Detour

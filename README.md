@@ -1,7 +1,20 @@
+# gtfs-realtime
 
-Haskell code for GTFS realtime protocol buffer
+Haskell code to parse GTFS realtime protocol buffers. Target data source is the
+Boston MBTA.
 
-Documentation:
+This is not production ready.
+
+## Sample usage
+
+```bash
+curl http://developer.mbta.com/lib/GTRTFS/Alerts/TripUpdates.pb | dist gtfs-realtime t
+curl http://developer.mbta.com/lib/GTRTFS/Alerts/VehiclePositions.pb | dist gtfs-realtime v
+curl http://developer.mbta.com/lib/GTRTFS/Alerts/Alerts.pb | dist gtfs-realtime a
+```
+
+
+## Related Documentation
 
 https://developers.google.com/transit/gtfs-realtime/reference#TripUpdate
 
@@ -20,13 +33,6 @@ http://developer.mbta.com/lib/GTRTFS/Alerts/Alerts.pb
 
 https://code.google.com/p/protobuf-haskell/wiki/Basics
 
-Sample usage
-
-gtfs-realtime $ curl http://developer.mbta.com/lib/GTRTFS/Alerts/TripUpdates.pb | dist gtfs-realtime
-
-New usage
-
-gtfs-realtime $ dist gtfs-realtime < TripUpdates.pb   | jqm | grep start_date
-
-
 https://github.com/dcodeIO/ProtoBuf.js/wiki/ProtoBuf.js-vs-JSON
+
+
