@@ -21,5 +21,5 @@ main = do
       case feedtype of
         "t" -> mapM_ (BL8.putStrLn . encode . getField . P.tripUpdate) xs 
         "a" -> mapM_ (BL8.putStrLn . encode . getField . P.alert) xs 
-        "v" -> mapM_ (putStrLn . show. getField . P.vehicle) xs 
+        "v" -> mapM_ (BL8.putStrLn . encode . getField . P.vehicle) xs 
   

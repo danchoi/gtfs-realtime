@@ -49,6 +49,34 @@ instance ToJSON StopTimeEvent where
 
 ------------------------------------------------------------------------
 
+instance ToJSON VehiclePosition where
+  toJSON v = object [
+      "trip" .= (getField . vpTrip $ v)
+    , "vehicle" .= (getField . vpVehicle $ v)
+    , "position" .= (getField . vpPosition $ v)
+    , "current_stop_sequence" .= (getField . vpCurrentStopSequence $ v)
+    , "stop_status" .= (getField . vpVehicleStopStatus $ v)
+    , "timestamp" .= (getField . vpTimeStamp $ v)
+    , "congestion_level" .= (getField . vpCongestionLevel $ v)
+    ] 
+
+instance ToJSON Position where
+  toJSON v = object [
+      "lat" .= (getField . latitude $ v)
+    , "lng" .= (getField . longitude $ v)
+    , "bearing" .= (getField . bearing $ v)
+    , "odometer" .= (getField . odometer $ v)
+    , "speed" .= (getField . speed $ v)
+    ] 
+
+instance ToJSON VehicleStopStatus where
+  toJSON = String . T.pack . show
+
+instance ToJSON CongestionLevel where
+  toJSON = String . T.pack . show
+
+------------------------------------------------------------------------
+
 instance ToJSON Alert where
   toJSON v = object [
       "time_range" .= (getField . alertTimeRange $ v)
