@@ -47,5 +47,46 @@ instance ToJSON StopTimeEvent where
     , "uncertainty" .= (getField . uncertainty $ v)
     ]
 
+------------------------------------------------------------------------
+
+instance ToJSON Alert where
+  toJSON v = object [
+      "time_range" .= (getField . alertTimeRange $ v)
+    , "entities" .= (getField . alertEntitySelector $ v)
+    , "cause" .= (getField . alertCause $ v)
+    , "effect" .= (getField . alertEffect $ v)
+    , "url" .= (getField . alertUrl $ v)
+    , "description"  .= (getField . alertDescriptionText $ v)
+    ]
+
+instance ToJSON TimeRange where
+  toJSON v = object [
+      "start" .= (getField . timeRangeStart $ v)
+    , "end" .= (getField . timeRangeEnd $ v)
+    ]
+
+instance ToJSON EntitySelector where
+  toJSON v = object [
+      "agency_id" .= (getField . esAgencyId $ v)
+    , "route_id" .= (getField . esRouteId  $ v)
+    , "route_type" .= (getField . esRouteType  $ v)
+    , "trip" .= (getField . esTrip  $ v)
+    , "stop_id" .= (getField . esStopId  $ v)
+    ]
+    
+instance ToJSON Cause where
+  toJSON = String . T.pack . show
+
+instance ToJSON Effect where
+  toJSON = String . T.pack . show
+  
+instance ToJSON TranslatedString where
+  toJSON v = toJSON (getField . translation $ v)
+
+instance ToJSON Translation where
+  toJSON v = object [ 
+        "text" .= (getField . translationText $ v)
+      , "language" .= (getField . translationLanguage $ v)
+      ]
 
 
