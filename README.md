@@ -8,10 +8,17 @@ This is not production ready.
 ## Sample usage
 
 ```bash
-curl http://developer.mbta.com/lib/GTRTFS/Alerts/TripUpdates.pb | gtfs-realtime t
-curl http://developer.mbta.com/lib/GTRTFS/Alerts/VehiclePositions.pb | gtfs-realtime v
-curl http://developer.mbta.com/lib/GTRTFS/Alerts/Alerts.pb | gtfs-realtime a
+curl https://cdn.mbta.com/realtime/TripUpdates.pb | gtfs-realtime t
+curl https://cdn.mbta.com/realtime/VehiclePositions.pb | gtfs-realtime v
+curl https://cdn.mbta.com/realtime/Alerts.pb | gtfs-realtime a
 ```
+
+
+https://cdn.mbta.com/realtime/Alerts.pb
+https://cdn.mbta.com/realtime/TripUpdates.pb
+https://cdn.mbta.com/realtime/VehiclePositions.pb
+
+
 
 
 ## Related Documentation
