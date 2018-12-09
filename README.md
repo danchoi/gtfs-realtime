@@ -8,9 +8,9 @@ This is not production ready.
 ## Sample usage
 
 ```bash
-curl https://cdn.mbta.com/realtime/TripUpdates.pb | gtfs-realtime t
-curl https://cdn.mbta.com/realtime/VehiclePositions.pb | gtfs-realtime v
-curl https://cdn.mbta.com/realtime/Alerts.pb | gtfs-realtime a
+curl -L https://cdn.mbta.com/realtime/TripUpdates.pb | gtfs-realtime t
+curl -L https://cdn.mbta.com/realtime/VehiclePositions.pb | gtfs-realtime v
+curl -L https://cdn.mbta.com/realtime/Alerts.pb | gtfs-realtime a
 ```
 
 
