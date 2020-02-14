@@ -20,7 +20,7 @@ executable gtfs-realtime
   main-is:             Main.hs
   other-modules:       GTFS.Protobuf
                      , GTFS.JSON
-  build-depends:       base >=4.7 && <4.8
+  build-depends:       base >=4.6 && <5.0
                      , protobuf
                      , cereal
                      , text
