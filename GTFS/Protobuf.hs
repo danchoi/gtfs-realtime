@@ -40,6 +40,7 @@ data TripDescriptor = TripDescriptor {
     trip_id               :: Optional 1 (Value Text)
   , route_id              :: Optional 5 (Value Text)
   , start_time            :: Optional 2 (Value Text)
+  , direction_id          :: Optional 6 (Value Int64)
   , start_date            :: Optional 3 (Value Text)
   , schedule_relationship :: Optional 4 (Enumeration TDScheduleRelationship)
   -- extensions

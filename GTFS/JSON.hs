@@ -9,6 +9,7 @@ instance ToJSON TripDescriptor where
   toJSON v = object [
       "trip_id"               .= (getField . trip_id $ v)
     , "route_id"              .= (getField . route_id $ v)
+    , "direction_id"          .= (getField . direction_id $ v)
     , "start_time"            .= (getField . start_time $ v)
     , "start_date"            .= (getField . start_date $ v)
     , "schedule_relationship" .= (getField . schedule_relationship $ v)
